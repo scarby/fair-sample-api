@@ -5,7 +5,7 @@ Feature: JSON to email
 Scenario: valid JSON reults in a email
   When  I request to create an email with:
     | attribute | type   | value |  
-    | from      | string | scarby@scarby.org    |                     
+    | from      | string | scarby@scarby.co.uk    |                     
     | to        | string | scarby2@gmail.com   |
     | subject   | string | This is only a test |
     | body      | string | body |

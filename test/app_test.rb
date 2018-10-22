@@ -21,15 +21,12 @@ end
 
 class EmailSendTest < Minitest::Test
   def test_can_send_mail_aws_up
-    sender = "test@example.com"
-    subject = "testing123"
-    body = "this is a test of the emergency broadcast system"
-    Aws.config[:ses] = {
-      stub_responses: {
-        send_email: {:message_id => "12345"}
-      }
-    }
-    assert_instance_of String, sendEmailAWS(sender,sender,subject,body)
+#    Aws.config[:ses] = {
+#      stub_responses: {
+#        send_email: {:message_id => "12345"}
+#      }
+#    }
+    assert_instance_of String, sendEmailAWS(@@from,@@to,@@subject,@@body)
   end
   def test_when_aws_fails_try_sendgrid
     Aws.config[:ses] = {

@@ -23,7 +23,7 @@ end
 
 def sendEmailAWS(sender,recipient,subject,body,encoding="utf8")
 
-  ses = Aws::SES::Client.new(region: 'us-west-1')
+  ses = Aws::SES::Client.new(region: ENV.fetch("AWS_DEFAULT_REGION", "us-west-2"))
   begin
     resp = ses.send_email({
       destination: {
@@ -53,15 +53,10 @@ def sendEmailAWS(sender,recipient,subject,body,encoding="utf8")
 end
 
 def sendEmailSG (sender,recipient,subject,body)
-  puts "sender " + sender
-  puts "recipient " + recipient
-  puts "subject" + subject
-  puts "body " + body
   from = SendGrid::Email.new(email: sender)
   to = SendGrid::Email.new(email: recipient)
   content = SendGrid::Content.new(type: 'text/plain', value: body)
   mail = SendGrid::Mail.new(from, subject, to, content)
-
   sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
   response = sg.client.mail._('send').post(request_body: mail.to_json)
 
