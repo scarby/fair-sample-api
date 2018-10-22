@@ -1,0 +1,4 @@
+POST http://localhost:3000mail HTTP/1.1
+
+{"from":"test@scarby.org","to":"scarby2@gmail.com","subject":"testing123","body":"hey, this is a test of the automated broadcast system"}
+

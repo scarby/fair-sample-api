@@ -1,0 +1,26 @@
+{
+  "$id": "https://scarby.org/email.schema.json",
+  "title": "Email",
+  "type": "object",
+  "properties": {
+    "to": {
+      "type": "string",
+      "description": "The e-mail recipient",
+      "pattern": "^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$"
+    },
+    "from": {
+      "type": "string",
+      "description": "This e-mails sender",
+      "pattern": "^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$"
+
+    },
+    "body": {
+      "type": "string",
+      "description": "the body of the e-mail"
+    },
+    "subject": {
+      "description": "the subkect of the e-mail",
+      "type": "string"
+    }
+  }
+}
